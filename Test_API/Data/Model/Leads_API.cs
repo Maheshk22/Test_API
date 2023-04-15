@@ -12,8 +12,8 @@ namespace Test_API.Data.Model
         {
             public string type { get; set; }
             public int unitCount { get; set; }
-            public bool instantRental { get; set; }
-            public bool instantRental1 { get; set; }
+            public int Mahesh { get; set; }
+         
 
         }
 

@@ -19,5 +19,6 @@ namespace Test_API.Data
         public string MoveInDate { get; set; }
         public string TypesOfItems { get; set; }
         public string ReasonForStorage { get; set; }
+        public string ReasonForStorage1 { get; set; }
     }
 }
