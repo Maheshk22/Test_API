@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Console_ApiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Leads">
+          <Key>
+            <PropertyRef Name="Uuid" />
+          </Key>
+          <Property Name="Uuid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Type" Type="varchar(max)" />
+          <Property Name="Status" Type="varchar(max)" />
+          <Property Name="ExpiresAt" Type="varchar(max)" />
+          <Property Name="CreatedAt" Type="varchar(max)" />
+          <Property Name="UpdatedAt" Type="varchar(max)" />
+          <Property Name="InstantRental" Type="bit" />
+        </EntityType>
+        <EntityType Name="Needs">
+          <Key>
+            <PropertyRef Name="NeedId" />
+          </Key>
+          <Property Name="NeedId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Duration" Type="varchar(max)" />
+          <Property Name="MoveInDate" Type="varchar(max)" />
+          <Property Name="TypesOfItems" Type="varchar(max)" />
+          <Property Name="ReasonForStorage" Type="varchar(max)" />
+        </EntityType>
+        <EntityContainer Name="Console_ApiModelStoreContainer">
+          <EntitySet Name="Leads" EntityType="Self.Leads" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Needs" EntityType="Self.Needs" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Console_ApiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Lead">
+          <Key>
+            <PropertyRef Name="Uuid" />
+          </Key>
+          <Property Name="Uuid" Type="Guid" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ExpiresAt" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedAt" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedAt" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="InstantRental" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Need">
+          <Key>
+            <PropertyRef Name="NeedId" />
+          </Key>
+          <Property Name="NeedId" Type="Guid" Nullable="false" />
+          <Property Name="Duration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MoveInDate" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TypesOfItems" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ReasonForStorage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="Console_ApiEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Leads" EntityType="Self.Lead" />
+          <EntitySet Name="Needs" EntityType="Self.Need" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Console_ApiModelStoreContainer" CdmEntityContainer="Console_ApiEntities">
+          <EntitySetMapping Name="Leads">
+            <EntityTypeMapping TypeName="Console_ApiModel.Lead">
+              <MappingFragment StoreEntitySet="Leads">
+                <ScalarProperty Name="Uuid" ColumnName="Uuid" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ExpiresAt" ColumnName="ExpiresAt" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="InstantRental" ColumnName="InstantRental" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Needs">
+            <EntityTypeMapping TypeName="Console_ApiModel.Need">
+              <MappingFragment StoreEntitySet="Needs">
+                <ScalarProperty Name="NeedId" ColumnName="NeedId" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="MoveInDate" ColumnName="MoveInDate" />
+                <ScalarProperty Name="TypesOfItems" ColumnName="TypesOfItems" />
+                <ScalarProperty Name="ReasonForStorage" ColumnName="ReasonForStorage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
